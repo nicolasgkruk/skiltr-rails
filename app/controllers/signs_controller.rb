@@ -1,28 +1,22 @@
 class SignsController < ApplicationController
-  before_action :logged_in_user, only: [:create]
+  before_action :logged_in_user, only: [:create, :index]
   before_action :correct_user, only: [:edit, :show, :update, :destroy]
 
   def index
-      @signs = current_user.signs.paginate(page: params[:page])
-  end
+    if params.has_key?(:project_id)
+      @search_result_signs = current_user.signs
+      @search_result_signs = @search_result_signs.where(project_id: params[:project_id].to_i) if params[:project_id].present?
+      @search_result_signs = @search_result_signs.where(source_id: params[:source_id].to_i) if params[:source_id].present?
+      @search_result_signs = @search_result_signs.search_by_content_and_excerpt(params[:text_content]) if params[:text_content].present?
+      @search_result_signs = @search_result_signs.paginate(page: params[:page])
 
-  # def index
-  #   if params.has_key?(:project_id)
-  #     @search_result_signs = current_user.signs
-  #     @search_result_signs = @search_result_signs.where(project_id: params[:project_id].to_i) if params[:project_id].to_i > 0
-  #     @search_result_signs = @search_result_signs.where(source_id: params[:source_id].to_i) if params[:source_id].to_i > 0
-  #     @search_results_signs = @search_result_signs.search_by_content_and_excerpt(params[:text_content]) if params[:text_content].present?
-  #
-  #     # TODO tags all or any
-  #
-  #     @search_result_signs = @search_result_signs.paginate(page: params[:page])
-  #     respond_to do |format|
-  #       format.js { render partial: 'search-results'}
-  #     end
-  #   else
-  #     @signs = current_user.signs.paginate(page: params[:page])
-  #   end
-  # end
+      respond_to do |format|
+        format.js { render partial: 'search-results'}
+      end
+    else
+      @signs = current_user.signs.paginate(page: params[:page])
+    end
+  end
 
   # if search
   #   search_length = search.split.length

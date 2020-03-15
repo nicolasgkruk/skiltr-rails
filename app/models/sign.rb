@@ -3,7 +3,7 @@ class Sign < ApplicationRecord
   pg_search_scope :search_by_content_and_excerpt,
                   against: [:content, :excerpt],
                   using: {
-                      tsearch: { prefix: true }
+                      tsearch: { any_word: true }
                   }
 
   belongs_to :user
