@@ -1,5 +1,7 @@
 class Tag < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :signs
-  has_and_belongs_to_many :projects
+  has_many :sign_tags
+  has_many :signs, through: :sign_tags
+
+  validates :title, presence: true, length: { maximum: 255 }
 end

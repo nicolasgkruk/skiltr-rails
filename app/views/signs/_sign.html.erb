@@ -1,0 +1,51 @@
+ <li class="d-flex justify-content-between align-items-center">
+  <div>
+    <div>
+      <span class="header">Excerpt: </span>
+      <span class="excerpt"><%= sign.excerpt %></span>
+    </div>
+    <% if sign.excerpt_location_reference %>
+      <div>
+        <span class="header">Excerpt location reference: </span>
+        <span><%= number_with_precision(sign.excerpt_location_reference, precision: 0)  %></span>
+      </div>
+    <% end %>
+    <div>
+      <span class="header">Source: </span>
+      <span><%= link_to sign.source.title + " by " + sign.source.author, source_path(sign.source.id), title: "View only this source's signs" %></span>
+    </div>
+    <% if sign.content.strip != "" %>
+      <div>
+        <span class="header">Content: </span>
+        <span><%= sign.content  %></span>
+      </div>
+    <% end %>
+    <div>
+      <span class="header">Creation date: </span>
+      <span><%= time_tag sign.created_at  %></span>
+    </div>
+    <div>
+      <span class="header">Last edition date: </span>
+      <span><%= time_tag sign.updated_at  %></span>
+    </div>
+    <div>
+      <span class="header">Project: </span>
+      <span><%= link_to sign.project.title, project_path(sign.project.id), title: "View only this project's signs" %></span>
+    </div>
+    <% if sign.sign_tags %>
+      <div>
+        <span class="header">Tags: </span>
+        <% sign.sign_tags.each do |sign_tag| %>
+          <span> #<%= link_to sign_tag.tag.title, tag_path(sign_tag.tag.id), title: "View signs tagged with this" %> </span>
+          <% if(sign_tag != sign.sign_tags.last) %>
+            ,
+          <% end %>
+        <%end %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "edit", edit_sign_path(sign.id) %> -
+    <%= link_to "delete", sign, method: :delete, data: { confirm: "Are you sure?" } %>
+  </div>
+</li>

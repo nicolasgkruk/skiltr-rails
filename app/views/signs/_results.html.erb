@@ -1,0 +1,6 @@
+<%= will_paginate @search_result_signs %>
+<%= link_to "Create new", signs_new_path , class: "btn btn-primary pull-right"%>
+<ul class="items">
+  <%= render @search_result_signs %>
+</ul>
+<%= will_paginate @search_result_signs %>

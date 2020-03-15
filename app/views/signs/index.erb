@@ -1,0 +1,41 @@
+<% provide(:title, 'All signs') %>
+<h1>All signs</h1>
+
+<!--<div class="row">-->
+<!--  <div class="col-md-6 col-md-offset-3">-->
+    <%#= form_with url: "/signs", method: "get" do |f|%>
+      <%#= f.label :project_id %>
+      <%#= f.collection_select :project_id, current_user.projects.all, :id, :title, prompt: 'All projects' %>
+
+      <%#= f.label :source_id %>
+      <%#= f.collection_select :source_id, current_user.sources.all, :id, :title, prompt: 'All sources' %>
+
+      <%#= f.label :text_content, "Expression match in excerpt or content" %>
+      <%#= f.text_field :text_content, class: 'form-control' %>
+
+<!--      <h4>Fill only one of the tags search boxes below:</h4>-->
+
+      <%#= f.label :tag_ids_all, "ALL search (will result on tags that have ALL of the indicated tags)" %>
+      <%#= f.collection_select :tag_ids_all, current_user.tags.all, :id, :title, {}, multiple: true %>
+
+      <%#= f.label :tag_ids_any, "ANY search (will result on tags that have ANY of the indicated tags)" %>
+      <%#= f.collection_select :tag_ids_any, current_user.tags.all, :id, :title, {}, multiple: true %>
+
+      <%#= submit_tag "Search", class: "btn btn-primary" %>
+    <%# end %>
+<!--  </div>-->
+<!--</div>-->
+
+<div id="all-signs">
+  <%= will_paginate %>
+  <%= link_to "Create new", signs_new_path , class: "btn btn-primary pull-right"%>
+  <ul class="items">
+    <%= render @signs %>
+  </ul>
+  <%= will_paginate %>
+</div>
+
+<div id="search-results">
+
+</div>
+

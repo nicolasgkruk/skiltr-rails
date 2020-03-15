@@ -1,0 +1,8 @@
+<% provide(:title, 'Signs for this project') %>
+<h1>Signs tagged with #<%= @tag.title %></h1>
+
+<%= will_paginate @tagSigns %>
+<ul class="items">
+  <%= render @tagSigns %>
+</ul>
+<%= will_paginate @tagSigns %>

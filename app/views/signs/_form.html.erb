@@ -1,0 +1,35 @@
+<%= form_with(model: @sign, local: true) do |f| %>
+
+  <% if @sign.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        The form contains <%= pluralize(@sign.errors.count, "error") %>.
+      </div>
+      <ul>
+        <% @sign.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :project_id %>
+  <%= f.collection_select :project_id, current_user.projects.all, :id, :title, prompt: true %>
+
+  <%= f.label :source_id %>
+  <%= f.collection_select :source_id, current_user.sources.all, :id, :title, prompt: true %>
+
+  <%= f.label :excerpt %>
+  <%= f.text_area :excerpt, class: 'form-control' %>
+
+  <%= f.label :excerpt_location_reference %>
+  <%= f.number_field :excerpt_location_reference, class: 'form-control' %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content, class: 'form-control' %>
+
+  <%= f.label :tag_ids %>
+  <%= f.collection_select :tag_ids, current_user.tags.all, :id, :title, {}, multiple: true %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

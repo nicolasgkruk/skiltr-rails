@@ -1,0 +1,9 @@
+<% provide(:title, 'All sources') %>
+<h1>All sources</h1>
+
+<%= will_paginate %>
+<%= link_to "Create new", sources_new_path , class: "btn btn-primary pull-right"%>
+<ul class="items">
+  <%= render @sources %>
+</ul>
+<%= will_paginate %>
