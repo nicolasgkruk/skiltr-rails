@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'excerpts/new'
   get 'signs/new'
   get 'sources/new'
   get 'projects/new'
@@ -20,4 +21,5 @@ Rails.application.routes.draw do
   resources :sources
   resources :tags
   resources :signs
+  resources :excerpts
 end

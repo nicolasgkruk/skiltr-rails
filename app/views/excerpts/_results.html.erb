@@ -1,0 +1,6 @@
+<%= will_paginate @search_result_excerpts %>
+<%= link_to "Create new", excerpts_new_path , class: "btn btn-primary pull-right"%>
+<ul class="items">
+  <%= render @search_result_excerpts %>
+</ul>
+<%= will_paginate @search_result_excerpts %>

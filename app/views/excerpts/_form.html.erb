@@ -1,0 +1,29 @@
+<%= form_with(model: @excerpt, local: true) do |f| %>
+
+  <% if @excerpt.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        The form contains <%= pluralize(@excerpt.errors.count, "error") %>.
+      </div>
+      <ul>
+        <% @excerpt.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :source_id %>
+  <%= f.collection_select :source_id, current_user.sources.all, :id, :title, prompt: true %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content, class: 'form-control' %>
+
+  <%= f.label :location_reference %>
+  <%= f.number_field :location_reference, class: 'form-control' %>
+
+  <%= f.label :tag_ids %>
+  <%= f.collection_select :tag_ids, current_user.tags.all, :id, :title, {}, multiple: true %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

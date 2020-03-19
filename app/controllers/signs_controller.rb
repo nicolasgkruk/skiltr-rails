@@ -18,14 +18,6 @@ class SignsController < ApplicationController
     end
   end
 
-  # if search
-  #   search_length = search.split.length
-  #   find(:all, :conditions => [(['name LIKE ?'] * search_length).join(' AND ')] + search.split.map { |name| "%#{name}%" })
-  # else
-  #   find(:all)
-  # end
-
-
   def new
     @sign = Sign.new
   end

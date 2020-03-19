@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   has_many :projects
+  has_many :excerpts
   has_many :sources
   has_many :tags
   has_many :signs

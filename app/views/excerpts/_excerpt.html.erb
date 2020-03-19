@@ -1,0 +1,41 @@
+ <li class="d-flex justify-content-between align-items-center">
+  <div>
+    <div>
+      <span class="header">Excerpt: </span>
+      <span class="excerpt"><%= excerpt.content %></span>
+    </div>
+    <% if excerpt.location_reference %>
+      <div>
+        <span class="header">Excerpt location reference: </span>
+        <span><%= number_with_precision(excerpt.location_reference, precision: 0)  %></span>
+      </div>
+    <% end %>
+    <div>
+      <span class="header">Source: </span>
+      <span><%= link_to excerpt.source.title + " by " + excerpt.source.author, source_path(excerpt.source.id), title: "View only this source's excerpts" %></span>
+    </div>
+    <div>
+      <span class="header">Creation date: </span>
+      <span><%= time_tag excerpt.created_at  %></span>
+    </div>
+    <div>
+      <span class="header">Last edition date: </span>
+      <span><%= time_tag excerpt.updated_at  %></span>
+    </div>
+    <% if excerpt.excerpt_tags %>
+      <div>
+        <span class="header">Tags: </span>
+        <% excerpt.excerpt_tags.each do |excerpt_tag| %>
+          <span> #<%= link_to excerpt_tag.tag.title, tag_path(excerpt_tag.tag.id), title: "View excerpts tagged with this" %> </span>
+          <% if(excerpt_tag != excerpt.excerpt_tags.last) %>
+            ,
+          <% end %>
+        <%end %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "edit", edit_excerpt_path(excerpt.id) %> -
+    <%= link_to "delete", excerpt, method: :delete, data: { confirm: "Are you sure?" } %>
+  </div>
+</li>
