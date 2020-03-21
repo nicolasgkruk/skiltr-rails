@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :sources
   has_many :tags
   has_many :signs
+  has_many :excerpt_tags
+  has_many :sign_excerpts
 
   before_save   :downcase_email
   before_create :create_activation_digest

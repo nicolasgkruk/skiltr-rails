@@ -12,7 +12,7 @@ class SourcesController < ApplicationController
 
   def show
     @source = Source.find(params[:id])
-    @sourceSigns = Sign.where(source_id: params[:id]).paginate(page: params[:page])
+    @sourceExcerpts = Excerpt.where(source_id: params[:id]).paginate(page: params[:page])
   end
 
   def destroy

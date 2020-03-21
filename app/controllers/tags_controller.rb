@@ -12,8 +12,8 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    list_of_sign_ids_with_the_tag = SignTag.where(tag_id: params[:id]).to_a.map{|x| x[:sign_id]}
-    @tagSigns = Sign.where(id: list_of_sign_ids_with_the_tag).paginate(page: params[:page])
+    list_of_excerpt_ids_with_the_tag = ExcerptTag.where(tag_id: params[:id]).to_a.map{|x| x[:excerpt_id]}
+    @excerptsWithTag = Excerpt.where(id: list_of_excerpt_ids_with_the_tag).paginate(page: params[:page])
   end
 
   def destroy

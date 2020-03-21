@@ -1,0 +1,9 @@
+<% provide(:title, 'Signs associated to this excerpt') %>
+<h1>Signs distilled from:</h1>
+<div><%= @excerpt.content %></div>
+
+<%= will_paginate @signsWithExcerpt %>
+<ul class="items">
+  <%= render @signsWithExcerpt %>
+</ul>
+<%= will_paginate @signsWithExcerpt %>

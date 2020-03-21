@@ -1,8 +1,8 @@
-<% provide(:title, 'Signs for this project') %>
-<h1>Signs from: <%= @source.title %></h1>
+<% provide(:title, 'Excerpts from this source') %>
+<h1>Excerpts from: <%= @source.title %></h1>
 
-<%= will_paginate @sourceSigns %>
+<%= will_paginate @sourceExcerpts %>
 <ul class="items">
-  <%= render @sourceSigns %>
+  <%= render @sourceExcerpts %>
 </ul>
-<%= will_paginate @sourceSigns %>
+<%= will_paginate @sourceExcerpts %>

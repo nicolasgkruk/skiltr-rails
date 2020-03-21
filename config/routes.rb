@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   resources :sources
   resources :tags
   resources :signs
-  resources :excerpts
+  resources :excerpts, except: [:show]
 end
