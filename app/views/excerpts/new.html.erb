@@ -24,7 +24,7 @@
       <%= f.text_area :content, class: 'form-control' %>
 
       <%= f.label :location_reference %>
-      <%= f.number_field :excerpt_location_reference, class: 'form-control' %>
+      <%= f.number_field :location_reference, class: 'form-control' %>
 
       <%= f.label :tag_ids %>
       <%= f.collection_select :tag_ids, current_user.tags.all, :id, :title, {}, multiple: true %>
