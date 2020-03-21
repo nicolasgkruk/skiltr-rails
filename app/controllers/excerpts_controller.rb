@@ -7,9 +7,9 @@ class ExcerptsController < ApplicationController
       @search_result_excerpts = current_user.excerpts
       @search_result_excerpts = @search_result_excerpts.where(source_id: params[:source_id].to_i) if params[:source_id].present?
 
-      if params[:tag_ids_any].present?
-        seachtagIds = params[:tag_ids_any].drop(1).map(&:to_i)
-        list_of_excerpt_ids_with_the_tag = current_user.excerpt_tags.where(tag_id: seachtagIds).to_a.map{|x| x[:excerpt_id]}
+      if params[:tag_ids_any].count() > 1
+        searchtagIds = params[:tag_ids_any].drop(1).map(&:to_i)
+        list_of_excerpt_ids_with_the_tag = current_user.excerpt_tags.where(tag_id: searchtagIds).to_a.map{|x| x[:excerpt_id]}
         @search_result_excerpts = @search_result_excerpts.where(id: list_of_excerpt_ids_with_the_tag)
       end
 
