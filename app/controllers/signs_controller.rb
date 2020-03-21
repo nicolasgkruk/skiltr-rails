@@ -8,7 +8,7 @@ class SignsController < ApplicationController
       @search_result_signs = current_user.signs
       @search_result_signs = @search_result_signs.where(project_id: params[:project_id].to_i) if params[:project_id].present?
 
-      if params[:tag_ids_any].present?
+      if params[:tag_ids_any].count() > 1
         seachtagIds = params[:tag_ids_any].drop(1).map(&:to_i)
         list_of_excerpt_ids_with_the_tag = current_user.excerpt_tags.where(tag_id: seachtagIds).to_a.map{|x| x[:excerpt_id]}
         list_of_signs_with_excerpts_with_the_tags = current_user.sign_excerpts.where(excerpt_id: list_of_excerpt_ids_with_the_tag).to_a.map{|x| x[:sign_id]}
