@@ -1,5 +1,5 @@
 <% provide(:title, 'Create new source') %>
-<h1>Create new source</h1>
+<h1>Add source</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -18,13 +18,13 @@
       <% end %>
 
       <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.text_field :title, class: 'form-control', placeholder: 'E.g. The communist manifesto' %>
 
-      <%= f.label :author %>
-      <%= f.text_field :author, class: 'form-control' %>
+      <%= f.label :author, 'Author/s' %>
+      <%= f.text_field :author, class: 'form-control', placeholder: 'E.g. Karl Marx, Friedrich Engels' %>
 
-      <%= f.label :url %>
-      <%= f.text_field :url, class: 'form-control' %>
+      <%= f.label :url, 'External reference' %>
+      <%= f.text_field :url, class: 'form-control', placeholder: 'E.g. the wikipedia link for the book, or the original url for the source for a blog post, etc.' %>
 
       <%= f.submit "Create", class: "btn btn-primary" %>
     <% end %>

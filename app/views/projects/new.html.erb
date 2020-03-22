@@ -1,5 +1,5 @@
 <% provide(:title, 'Create new project') %>
-<h1>Create new project</h1>
+<h1>Create project</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -18,10 +18,10 @@
       <% end %>
 
       <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.text_field :title, class: 'form-control', placeholder: "E.g: Communism and sci-fi" %>
 
       <%= f.label :description %>
-      <%= f.text_area :description, class: 'form-control' %>
+      <%= f.text_area :description, class: 'form-control', placeholder: "E.g: Article to show the influence of marxist ideas on sci-fi literature" %>
 
       <%= f.submit "Create", class: "btn btn-primary" %>
     <% end %>

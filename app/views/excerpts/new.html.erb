@@ -1,5 +1,5 @@
 <% provide(:title, 'Create new excerpts') %>
-<h1>Create new excerpt</h1>
+<h1>Add excerpt</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -21,12 +21,12 @@
       <%= f.collection_select :source_id, current_user.sources.all, :id, :title, prompt: true %>
 
       <%= f.label :content %>
-      <%= f.text_area :content, class: 'form-control' %>
+      <%= f.text_area :content, class: 'form-control', placeholder: 'E.g. Freeman and slave, patrician and plebeian, lord and serf, guildmaster and journeyman, in a word, oppressor and oppressed, stood in constant opposition to one another, carried on an uninterrupted, now hidden, now open fight, that each time ended, either in the revolutionary reconstitution of society at large, or in the common ruin of the contending classes.' %>
 
       <%= f.label :location_reference %>
-      <%= f.number_field :location_reference, class: 'form-control' %>
+      <%= f.number_field :location_reference, class: 'form-control', placeholder: "Page number or e-book position reference or leave blank if it doesn't apply" %>
 
-      <%= f.label :tag_ids %>
+      <%= f.label :tag_ids, "Tags associated to this excerpt" %>
       <%= f.collection_select :tag_ids, current_user.tags.all, :id, :title, {}, multiple: true %>
 
       <%= f.submit "Create", class: "btn btn-primary" %>

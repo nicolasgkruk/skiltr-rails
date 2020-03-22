@@ -1,16 +1,17 @@
 <% provide(:title, 'All signs') %>
 <h1>All signs</h1>
 
+<h2>Search</h2>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with url: "/signs", method: "get" do |f|%>
       <%= f.label :project_id %>
       <%= f.collection_select :project_id, current_user.projects.all, :id, :title, prompt: 'All projects' %>
 
-      <%= f.label :text_content, "Expression match in content" %>
-      <%= f.text_field :text_content, class: 'form-control' %>
+      <%= f.label :text_content, "Full text search against sign contents" %>
+      <%= f.text_field :text_content, class: 'form-control', placeholder: 'E.g. slave classes revolutionary' %>
 
-      <%= f.label :tag_ids_any, "Signs distilled from excerpts with any of the following tags:" %>
+      <%= f.label :tag_ids_any, "Filter only from signs made with excerpts that have any of the following tags:" %>
       <%= f.collection_select :tag_ids_any, current_user.tags.all, :id, :title, {}, multiple: true %>
 
       <%= submit_tag "Search", class: "btn btn-primary" %>
@@ -20,7 +21,7 @@
 
 <div id="all-signs">
   <%= will_paginate %>
-  <%= link_to "Create new", signs_new_path , class: "btn btn-primary pull-right"%>
+  <%= link_to "Create", signs_new_path , class: "btn btn-primary pull-right"%>
   <ul class="items">
     <%= render @signs %>
   </ul>

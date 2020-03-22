@@ -1,5 +1,5 @@
 <% provide(:title, 'Create new tag') %>
-<h1>Create new tag</h1>
+<h1>Create tag</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -18,10 +18,10 @@
       <% end %>
 
       <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.text_field :title, class: 'form-control', placeholder: 'E.g. communism' %>
 
       <%= f.label :description %>
-      <%= f.text_area :description, class: 'form-control' %>
+      <%= f.text_area :description, class: 'form-control', placeholder: 'E.g. The communism utopia in Marxist thought' %>
 
       <%= f.submit "Create", class: "btn btn-primary" %>
     <% end %>
