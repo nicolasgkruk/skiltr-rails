@@ -18,7 +18,7 @@ class TagsController < ApplicationController
 
   def destroy
     Tag.find(params[:id]).destroy
-    flash[:success] = "tag deleted"
+    flash[:success] = "Tag deleted"
     redirect_to tags_path
   end
 
@@ -29,7 +29,7 @@ class TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
-      flash[:success] = "tag updated"
+      flash[:success] = "Tag updated"
       redirect_to tags_path
     else
       render 'edit'
