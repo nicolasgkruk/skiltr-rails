@@ -5,6 +5,6 @@
   </div>
   <div>
     <%= link_to "edit", edit_source_path(source.id) %> -
-    <%= link_to "delete", source, method: :delete, data: { confirm: "Are you sure?" } %>
+    <%= link_to "delete", source, method: :delete, data: { confirm: "Please take into account that by deleting this source you will also be deleting as well all its added excerpts. Do you confirm?" } %>
   </div>
 </li>

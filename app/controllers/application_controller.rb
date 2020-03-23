@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include SignsHelper
+  include ExcerptsHelper
+  include SourcesHelper
+  include ProjectsHelper
+  include TagsHelper
 
   private
 

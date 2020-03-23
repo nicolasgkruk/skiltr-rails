@@ -8,7 +8,7 @@ class Sign < ApplicationRecord
 
   belongs_to :user
   belongs_to :project
-  has_many :sign_excerpts, dependent: :destroy
+  has_many :sign_excerpts
   has_many :excerpts, through: :sign_excerpts
 
   validates :content, presence: true

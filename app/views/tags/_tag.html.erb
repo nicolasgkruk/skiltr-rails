@@ -5,6 +5,6 @@
   </div>
   <div>
     <%= link_to "edit", edit_tag_path(tag.id) %> -
-    <%= link_to "delete", tag, method: :delete, data: { confirm: "Are you sure?" } %>
+    <%= link_to "delete", tag, method: :delete, data: { confirm: "Please take into account that by deleting this tag you will also be deleting all its previously applied associations with excerpts. Do you confirm?" } %>
   </div>
 </li>

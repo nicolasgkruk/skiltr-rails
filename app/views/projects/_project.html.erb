@@ -5,6 +5,6 @@
   </div>
   <div>
     <%= link_to "edit", edit_project_path(project.id) %> -
-    <%= link_to "delete", project, method: :delete, data: { confirm: "Are you sure?" } %>
+    <%= link_to "delete", project, method: :delete, data: { confirm: "Please take into account that by deleting this project you will also be deleting as well all signs you might have created which are associated to it. Do you confirm?" } %>
   </div>
 </li>
