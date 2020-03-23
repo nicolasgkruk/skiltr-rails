@@ -13,13 +13,13 @@
     </div>
   <% end %>
 
-  <%= f.label :project_id %>
+  <%= f.label :project_id, 'Project' %>
   <%= f.collection_select :project_id, current_user.projects.all, :id, :title, prompt: true %>
 
   <%= f.label :content %>
   <%= f.text_area :content, class: 'form-control' %>
 
-  <%= f.label :excerpt_ids %>
+  <%= f.label :excerpt_ids, 'Tags attached' %>
   <%= f.collection_select :excerpt_ids, current_user.excerpts.all, :id, :content, {}, multiple: true %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>

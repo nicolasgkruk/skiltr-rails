@@ -20,7 +20,7 @@
       <div>
         <span class="header">Extracted from the following excerpts: </span>
         <% sign.sign_excerpts.each do |sign_excerpt| %>
-          <div> <%= link_to sign_excerpt.excerpt.content, sign_path(sign.id), title: "View signs associated to this excerpt" %> </div>
+          <div> <%= link_to sign_excerpt.excerpt.content.first(100) + '...', excerpt_path(sign_excerpt.excerpt.id), title: "View excerpt details" %> </div>
         <%end %>
       </div>
 

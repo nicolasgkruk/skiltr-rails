@@ -22,7 +22,7 @@
   <%= f.label :location_reference %>
   <%= f.number_field :location_reference, class: 'form-control' %>
 
-  <%= f.label :tag_ids %>
+  <%= f.label :tag_ids, 'Tags attached' %>
   <%= f.collection_select :tag_ids, current_user.tags.all, :id, :title, {}, multiple: true %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>

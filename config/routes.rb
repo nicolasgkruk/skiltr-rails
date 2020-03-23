@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   resources :projects
   resources :sources
   resources :tags
-  resources :signs
-  resources :excerpts, except: [:show]
+  resources :signs, except: [:show]
+  resources :excerpts
 end
