@@ -223,6 +223,6 @@ input {
 }
 
 /* Selectize css */
-.select-one {
+input[type="select-one"] {
   width: 100% !important;
 }
