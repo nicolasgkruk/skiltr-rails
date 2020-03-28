@@ -39,10 +39,12 @@ class TagsController < ApplicationController
   def create
     @tag = current_user.tags.build(tag_params)
     if @tag.save
-      flash[:success] = "tag created!"
-      redirect_to tags_path
+      render json: @tag
+      # flash[:success] = "tag created!"
+      # redirect_to tags_path
     else
-      render 'static_pages/home'
+      # render 'static_pages/home'
+      render json: {errors: @tag.errors.full_messages}
     end
   end
 

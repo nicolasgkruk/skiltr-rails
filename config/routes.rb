@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :projects
   resources :sources
-  resources :tags
+  resources :tags, except: [:new]
   resources :signs, except: [:show]
   resources :excerpts
 end

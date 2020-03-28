@@ -5,13 +5,13 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_with url: "/excerpts", method: "get" do |f|%>
       <%= f.label :source_id %>
-      <%= f.collection_select :source_id, current_user.sources.all, :id, :title, prompt: 'All sources' %>
+      <%= f.collection_select :source_id, current_user.sources.all, :id, :title, {include_blank: 'All sources'}, class: 'selectize-search-single'%>
 
       <%= f.label :text_content, "Full text search against excerpt contents" %>
       <%= f.text_field :text_content, class: 'form-control', placeholder: 'E.g. slave classes revolutionary' %>
       
       <%= f.label :tag_ids_any, "Filter only from excerpts with any of the following tags:" %>
-      <%= f.collection_select :tag_ids_any, current_user.tags.all, :id, :title, {}, multiple: true %>
+      <%= f.collection_select :tag_ids_any, current_user.tags.all, :id, :title, {}, multiple: true, class: 'selectize-search-multiple' %>
 
       <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>
