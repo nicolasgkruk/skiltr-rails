@@ -38,10 +38,12 @@ class SourcesController < ApplicationController
   def create
     @source = current_user.sources.build(source_params)
     if @source.save
-      flash[:success] = "Source created!"
-      redirect_to sources_path
+      # flash[:success] = "Source created!"
+      # redirect_to sources_path
+      render json: @source
     else
-      render 'static_pages/home'
+      # render 'static_pages/home'
+      render json: {errors: @source.errors.full_messages}
     end
   end
 

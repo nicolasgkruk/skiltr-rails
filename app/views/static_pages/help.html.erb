@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <h1>How to use Skiltr</h1>
 <ol>
-  <li>Add a <%= link_to "source", sources_new_path %> (book, article, blog post, etc.).</li>
-  <li>Add one or more <%= link_to "excerpts", excerpts_new_path %> (extracted from a source book, article, blog post, etc.).</li>
-  <li>Add a <%= link_to "project", projects_new_path %> that you might be working on.</li>
-  <li>Add a <%= link_to "sign", signs_new_path %>, your personal comment which you extract from a series of excerpts (belonging to one or multiple sources).</li>
+  <li>Add <%= link_to "excerpts", excerpts_new_path %> (each of them extracted from a source: book, article, blog post, etc.).</li>
+  <li>Add <%= link_to "signs", signs_new_path %>, each of them comprised of a personal comment which you craft from a series of excerpts. Every sign is attached to a project (a book, a blog post, a dissertation, a screenplay, whatever). Hence, a project is comprised of multiple signs.</li>
+  <li>Search through your <%= link_to "signs", signs_path %> and use them to compose ideas for your project.</li>
 </ol>

@@ -9,9 +9,9 @@
 
       <%= f.label :text_content, "Full text search against excerpt contents" %>
       <%= f.text_field :text_content, class: 'form-control', placeholder: 'E.g. slave classes revolutionary' %>
-      
+
       <%= f.label :tag_ids_any, "Filter only from excerpts with any of the following tags:" %>
-      <%= f.collection_select :tag_ids_any, current_user.tags.all, :id, :title, {}, multiple: true, class: 'selectize-search-multiple' %>
+      <%= f.collection_select :tag_ids_any, current_user.tags.all, :id, :title, {prompt: 'Please start typing and select from existing tags'}, multiple: true, class: 'selectize-search-multiple' %>
 
       <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>

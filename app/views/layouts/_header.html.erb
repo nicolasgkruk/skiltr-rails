@@ -22,27 +22,46 @@
               Create new... <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Source", sources_new_path %></li>
-              <li><%= link_to "Excerpts", excerpts_new_path %></li>
-              <li><%= link_to "Project", projects_new_path %></li>
+              <li><%= link_to "Excerpt", excerpts_new_path %></li>
               <li><%= link_to "Sign", signs_new_path %></li>
             </ul>
           </li>
-          <% if user_has_signs %>
-          <li><%= link_to "Signs", signs_path %></li>
+
+          <% if user_has_signs || user_has_excerpts %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Search <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <% if user_has_excerpts %>
+              <li><%= link_to "Excerpts", excerpts_path %></li>
+              <% end %>
+              <% if user_has_signs %>
+              <li><%= link_to "Signs", signs_path %></li>
+              <% end %>
+            </ul>
+          </li>
           <% end %>
-          <% if user_has_projects %>
-          <li><%= link_to "Projects", projects_path %></li>
+
+          <% if user_has_projects || user_has_sources || user_has_tags %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                View all <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <% if user_has_projects %>
+                  <li><%= link_to "Projects", projects_path %></li>
+                <% end %>
+                <% if user_has_tags %>
+                  <li><%= link_to "Tags", tags_path %></li>
+                <% end %>
+                <% if user_has_sources %>
+                  <li><%= link_to "Sources", sources_path %></li>
+                <% end %>
+              </ul>
+            </li>
           <% end %>
-          <% if user_has_tags %>
-          <li><%= link_to "Tags", tags_path %></li>
-          <% end %>
-          <% if user_has_excerpts %>
-          <li><%= link_to "Excerpts", excerpts_path %></li>
-          <% end %>
-          <% if user_has_sources %>
-          <li><%= link_to "Sources", sources_path %></li>
-          <% end %>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>

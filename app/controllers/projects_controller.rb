@@ -18,10 +18,12 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
-      flash[:success] = "Project created!"
-      redirect_to projects_path
+      # flash[:success] = "Project created!"
+      # redirect_to projects_path
+      render json: @project
     else
-      render 'static_pages/home'
+      # render 'static_pages/home'
+      render json: {errors: @project.errors.full_messages}
     end
   end
 

@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :projects
-  resources :sources
+  resources :projects, except: [:new]
+  resources :sources, except: [:new]
   resources :tags, except: [:new]
   resources :signs, except: [:show]
   resources :excerpts
