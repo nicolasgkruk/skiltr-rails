@@ -28,16 +28,19 @@ $(document).on("turbolinks:load", function() {
         $('.show-within-form-modal').find('.excerpt-actions').addClass('no-show');
         $('.show-within-form-modal').find('.remove-excerpt-from-sign').addClass('no-show');
         $('.show-within-form-modal').find('.remove-excerpt-from-within-form-modal').removeClass('no-show');
-        $(".show-selected-excerpts-modal").modal();
-    });
 
-    $('.remove-excerpt-from-within-form-modal').click(function() {
-        alert('deselect clicked');
-        const excerptId = $(this).attr('id').slice(22);
-        $(this).addClass('no-show');
-        $("#add-excerpt-" + excerptId).removeClass('no-show');
-        $(this).closest("li").removeClass('selected-excerpt');
-        chosenExcerpts = chosenExcerpts.filter(x => x.id !== excerptId);
+        $('.remove-excerpt-from-within-form-modal').click(function() {
+            const excerptId = $(this).attr('id').slice(22);
+            $(this).addClass('no-show');
+            $("#add-excerpt-" + excerptId).removeClass('no-show');
+            //Not sure if (this) is correct... actually no... it should be the specific li...
+            //$(this).closest("li").removeClass('selected-excerpt');
+            $(this).closest('.li-container').addClass('no-show');
+
+            chosenExcerpts = chosenExcerpts.filter(x => x.id !== excerptId);
+        });
+
+        $(".show-selected-excerpts-modal").modal();
     });
 
     // poner arriba también de este form modal con los selected excerpts un textarea para poner el comment del sign?
