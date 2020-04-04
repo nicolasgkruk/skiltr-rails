@@ -23,8 +23,12 @@
       <%= f.label :content %>
       <%= f.text_area :content, class: 'form-control', placeholder: 'This is where you put your comment extracted from a chosen selection of excerpts.' %>
 
+      <% unless params[:excerpt_ids] %>
       <%= f.label :excerpt_ids, 'Distilled from the following excerpts:' %>
       <%= f.collection_select :excerpt_ids, current_user.excerpts.all, :id, :content, {}, multiple: true, class: 'selectize-search-multiple' %>
+      <% else %>
+      <%= params[:excerpt_ids] %>
+      <% end %>
 
       <%= f.submit "Create", class: "btn btn-primary" %>
     <% end %>

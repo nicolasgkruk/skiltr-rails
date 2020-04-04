@@ -28,6 +28,7 @@ class SignsController < ApplicationController
 
   def new
     @sign = Sign.new
+    @excerpts_ids = params[:excerpt_ids]
   end
 
   def destroy
@@ -88,7 +89,7 @@ class SignsController < ApplicationController
   private
 
   def sign_params
-    params.require(:sign).permit(:project_id, :content, :tag_ids_any, :text_content)
+    params.require(:sign).permit(:project_id, :content, :tag_ids_any, :text_content, excerpt_ids: [])
   end
 
   # Confirms the correct user.

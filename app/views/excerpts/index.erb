@@ -18,9 +18,14 @@
   </div>
 </div>
 
+<div class="row">
+  <%= link_to "Add new excerpt", excerpts_new_path , class: "btn btn-primary"%>
+  <%#= link_to "Show currently selected excerpts and add sign", signs_new_path(excerpt_ids: [1, 2]) , class: "btn btn-warning pull-right"%>
+  <button class="btn btn-success pull-right" id="show-selected-excerpts">Show currently selected excerpts and add sign</button>
+</div>
+
 <div id="all-excerpts">
   <%= will_paginate %>
-  <%= link_to "Add", excerpts_new_path , class: "btn btn-primary pull-right"%>
   <ul class="items">
     <%= render @excerpts %>
   </ul>
@@ -31,3 +36,15 @@
 
 </div>
 
+<div class="modal fade show-selected-excerpts-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="mySmallModalLabel">Selected excerpts for your next sign</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>

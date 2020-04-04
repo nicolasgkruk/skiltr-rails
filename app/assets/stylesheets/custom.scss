@@ -226,3 +226,13 @@ input {
 input[type="select-one"], input[type="select-multiple"], {
   width: 100% !important;
 }
+
+.no-show {
+  display: none;
+}
+
+.selected-excerpt {
+  background-color: #BEBEBE;
+  color: black;
+  border-radius: 6px;
+}
