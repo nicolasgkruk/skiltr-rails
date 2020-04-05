@@ -27,7 +27,10 @@
       <%= f.label :excerpt_ids, 'Distilled from the following excerpts:' %>
       <%= f.collection_select :excerpt_ids, current_user.excerpts.all, :id, :content, {}, multiple: true, class: 'selectize-search-multiple' %>
       <% else %>
-      <%= params[:excerpt_ids] %>
+        <%#= params[:excerpt_ids] %>
+        <% params[:excerpt_ids].each do |excerpt_id| %>
+          <%= f.hidden_field :excerpt_ids, :multiple => true, :value => excerpt_id %>
+        <% end %>
       <% end %>
 
       <%= f.submit "Create", class: "btn btn-primary" %>

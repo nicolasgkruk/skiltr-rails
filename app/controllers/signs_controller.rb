@@ -89,7 +89,7 @@ class SignsController < ApplicationController
   private
 
   def sign_params
-    params.require(:sign).permit(:project_id, :content, :tag_ids_any, :text_content, excerpt_ids: [])
+    params.require(:sign).permit(:project_id, :content, :tag_ids_any, :text_content, :excerpt_ids)
   end
 
   # Confirms the correct user.

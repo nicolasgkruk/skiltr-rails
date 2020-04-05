@@ -1,6 +1,19 @@
 $(document).on("turbolinks:load", function() {
     let chosenExcerpts = [];
 
+    function updateHref() {
+        const excerptIds = chosenExcerpts.map(x => x.id);
+        let excerptIdsToParams = '';
+
+        for (let i = 0; i < excerptIds.length; i++) {
+            excerptIdsToParams = excerptIdsToParams.concat('excerpt_ids%5B%5D=' + excerptIds[i]);
+            if (i !== excerptIds.length - 1) {
+                excerptIdsToParams = excerptIdsToParams.concat('&');
+            }
+        }
+        return 'signs/new?' + excerptIdsToParams;
+    };
+
     $('.add-excerpt-to-sign').click(function() {
         const excerptId = $(this).attr('id').slice(12);
         $(this).addClass('no-show');
@@ -8,6 +21,9 @@ $(document).on("turbolinks:load", function() {
         $(this).closest("li").addClass('selected-excerpt');
         const addLiHtml = $(this).closest("li").html();
         chosenExcerpts.push({id: excerptId, html: addLiHtml});
+
+        // Update href of .create-sign-with-chosen-excerpts
+        $('.create-sign-with-chosen-excerpts').attr('href', updateHref());
     });
 
     $('.remove-excerpt-from-sign').click(function() {
@@ -16,6 +32,9 @@ $(document).on("turbolinks:load", function() {
         $("#add-excerpt-" + excerptId).removeClass('no-show');
         $(this).closest("li").removeClass('selected-excerpt');
         chosenExcerpts = chosenExcerpts.filter(x => x.id !== excerptId);
+
+        // Update href of .create-sign-with-chosen-excerpts
+        $('.create-sign-with-chosen-excerpts').attr('href', updateHref());
     });
 
     $('#show-selected-excerpts').click(() => {
@@ -39,6 +58,10 @@ $(document).on("turbolinks:load", function() {
             $("#remove-excerpt-" + excerptId).closest("li").removeClass('selected-excerpt');
             $(this).closest('.li-container').addClass('no-show');
             chosenExcerpts = chosenExcerpts.filter(x => x.id !== excerptId);
+
+            // Update href of .create-sign-with-chosen-excerpts
+            $('.create-sign-with-chosen-excerpts').attr('href', updateHref());
+
             if (chosenExcerpts.length === 0) {
                 $(".show-selected-excerpts-modal").modal('hide');
             }
@@ -46,17 +69,5 @@ $(document).on("turbolinks:load", function() {
 
         $(".show-selected-excerpts-modal").modal();
     });
-
-    // abajo y arriba del form modal con los selected excerpts... agregar un botón de "Add a sign with these excerpts" (eso hace una ajax call a new con los excerpt_ids como query param).
-
-        $('.create-sign-with-chosen-excerpts').click(function() {
-            const excerptIds = chosenExcerpts.map(x => x.id);
-            $.ajax({
-                method: "GET",
-                url: 'signs/new',
-                data: 'excerpt_ids%5B%5D=1&excerpt_ids%5B%5D=2',
-                success: function(res) {}
-            });
-        });
 
 });
