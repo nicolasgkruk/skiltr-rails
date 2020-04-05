@@ -14,7 +14,7 @@
   <% end %>
 
   <%= f.label :source_id %>
-  <%= f.collection_select :source_id, current_user.sources.all, :id, :title, prompt: true %>
+  <%= f.collection_select :source_id, current_user.sources.all, :id, :title, {}, class: 'selectize-add-source' %>
 
   <%= f.label :content %>
   <%= f.text_area :content, class: 'form-control' %>
@@ -22,8 +22,8 @@
   <%= f.label :location_reference %>
   <%= f.number_field :location_reference, class: 'form-control' %>
 
-  <%= f.label :tag_ids, 'Tags attached' %>
-  <%= f.collection_select :tag_ids, current_user.tags.all, :id, :title, {}, multiple: true %>
+  <%= f.label :tag_ids, "Tags associated to this excerpt" %>
+  <%= f.collection_select :tag_ids, current_user.tags.all, :id, :title, {}, multiple: true, class: 'selectize-add-tag' %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

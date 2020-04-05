@@ -236,3 +236,12 @@ input[type="select-one"], input[type="select-multiple"], {
   color: black;
   border-radius: 6px;
 }
+
+.top-buffer {
+  margin-top:15px;
+}
+
+.center-aligned {
+  display: flex;
+  justify-content: center;
+}

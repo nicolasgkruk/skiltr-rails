@@ -14,13 +14,13 @@
   <% end %>
 
   <%= f.label :project_id, 'Project' %>
-  <%= f.collection_select :project_id, current_user.projects.all, :id, :title, prompt: true %>
+  <%= f.collection_select :project_id, current_user.projects.all, :id, :title, {}, class: 'selectize-add-project' %>
 
   <%= f.label :content %>
   <%= f.text_area :content, class: 'form-control' %>
 
-  <%= f.label :excerpt_ids, 'Tags attached' %>
-  <%= f.collection_select :excerpt_ids, current_user.excerpts.all, :id, :content, {}, multiple: true %>
+  <%= f.label :excerpt_ids, 'Distilled from the following excerpts:' %>
+  <%= f.collection_select :excerpt_ids, current_user.excerpts.all, :id, :content, {}, multiple: true, class: 'selectize-search-multiple' %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
