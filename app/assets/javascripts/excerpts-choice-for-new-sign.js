@@ -1,12 +1,9 @@
 $(document).on("turbolinks:load", function() {
-    //let excerptIds = [];
-
     let chosenExcerpts = [];
 
     $('.add-excerpt-to-sign').click(function() {
         const excerptId = $(this).attr('id').slice(12);
         $(this).addClass('no-show');
-        //excerptIds.push(excerptId);
         $("#remove-excerpt-" + excerptId).removeClass('no-show');
         $(this).closest("li").addClass('selected-excerpt');
         const addLiHtml = $(this).closest("li").html();
@@ -16,13 +13,18 @@ $(document).on("turbolinks:load", function() {
     $('.remove-excerpt-from-sign').click(function() {
         const excerptId = $(this).attr('id').slice(15);
         $(this).addClass('no-show');
-        //excerptIds = excerptIds.filter(x => x !== excerptId);
         $("#add-excerpt-" + excerptId).removeClass('no-show');
         $(this).closest("li").removeClass('selected-excerpt');
         chosenExcerpts = chosenExcerpts.filter(x => x.id !== excerptId);
     });
 
     $('#show-selected-excerpts').click(() => {
+
+        if (chosenExcerpts.length === 0) {
+            alert('Select at least one excerpt first');
+            return;
+        }
+
         $(".show-selected-excerpts-modal .modal-body").html(chosenExcerpts.map(x => x.html).concat());
         $(".show-selected-excerpts-modal .modal-body .li-container").addClass('show-within-form-modal');
         $('.show-within-form-modal').find('.excerpt-actions').addClass('no-show');
@@ -33,17 +35,28 @@ $(document).on("turbolinks:load", function() {
             const excerptId = $(this).attr('id').slice(22);
             $(this).addClass('no-show');
             $("#add-excerpt-" + excerptId).removeClass('no-show');
-            //Not sure if (this) is correct... actually no... it should be the specific li...
-            //$(this).closest("li").removeClass('selected-excerpt');
+            $("#remove-excerpt-" + excerptId).addClass('no-show');
+            $("#remove-excerpt-" + excerptId).closest("li").removeClass('selected-excerpt');
             $(this).closest('.li-container').addClass('no-show');
-
             chosenExcerpts = chosenExcerpts.filter(x => x.id !== excerptId);
+            if (chosenExcerpts.length === 0) {
+                $(".show-selected-excerpts-modal").modal('hide');
+            }
         });
 
         $(".show-selected-excerpts-modal").modal();
     });
 
-    // poner arriba también de este form modal con los selected excerpts un textarea para poner el comment del sign?
     // abajo y arriba del form modal con los selected excerpts... agregar un botón de "Add a sign with these excerpts" (eso hace una ajax call a new con los excerpt_ids como query param).
+
+        $('.create-sign-with-chosen-excerpts').click(function() {
+            const excerptIds = chosenExcerpts.map(x => x.id);
+            $.ajax({
+                method: "GET",
+                url: 'signs/new',
+                data: 'excerpt_ids%5B%5D=1&excerpt_ids%5B%5D=2',
+                success: function(res) {}
+            });
+        });
 
 });
