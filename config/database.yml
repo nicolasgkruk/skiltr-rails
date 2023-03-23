@@ -25,16 +25,16 @@ development:
   encoding: unicode
   database: skiltr-dev
   pool: 5
-  username: skiltr
-  password:
+  username: postgres
+  password: password
 
 test:
   adapter: postgresql
   encoding: unicode
   database: skiltr-test
   pool: 5
-  username: skiltr
-  password:
+  username: postgres
+  password: password
 
 production:
   adapter: postgresql
